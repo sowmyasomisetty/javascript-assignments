@@ -1,0 +1,397 @@
+ASSIGNMENT 4
+ADVANCED LEVEL
+10.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create and Manipulate a Document Fragment</title>
+</head>
+<body>
+
+    <script>
+        const docFragment = document.createDocumentFragment();
+        for (let i = 1; i <= 3; i++) {
+            const div = document.createElement('div');
+            div.textContent = Fragment Div ${i}; // Set text content
+            docFragment.appendChild(div); // Append div to the fragment
+        }
+
+        document.body.appendChild(docFragment);
+    </script>
+
+</body>
+</html>
+9.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge and Append Multiple Elements</title>
+</head>
+<body>
+
+    <!-- First unordered list -->
+    <ul class="list-one">
+        <li>Item 1 from List One</li>
+        <li>Item 2 from List One</li>
+    </ul>
+
+    <!-- Second unordered list -->
+    <ul class="list-two">
+        <li>Item 1 from List Two</li>
+        <li>Item 2 from List Two</li>
+    </ul>
+
+    <!-- Div to append the new merged list -->
+    <div id="mergedListContainer"></div>
+
+    <script>
+        const listOne = document.querySelector('.list-one');
+        const listTwo = document.querySelector('.list-two');
+        const mergedList = document.createElement('ul');
+        const listItemsOne = listOne.querySelectorAll('li');
+        listItemsOne.forEach(item => {
+            const newItem = document.createElement('li');
+            newItem.textContent = item.textContent; 
+            mergedList.appendChild(newItem); 
+        });
+        const listItemsTwo = listTwo.querySelectorAll('li');
+        listItemsTwo.forEach(item => {
+            const newItem = document.createElement('li');
+            newItem.textContent = item.textContent;
+            mergedList.appendChild(newItem); 
+        });
+        const mergedListContainer = document.getElementById('mergedListContainer');
+        mergedListContainer.appendChild(mergedList);
+    </script>
+
+</body>
+</html>
+8.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Traversal and Manipulation</title>
+    <style>
+        .target-div {
+            padding: 10px;
+            background-color: lightblue;
+            margin-bottom: 10px;
+        }
+        .last-child {
+            padding: 10px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Parent div -->
+    <div class="parent-div">
+        <div class="target-div">Target Div</div>
+        <div class="last-child">Last Child Element</div>
+    </div>
+
+    <script>
+        const targetDiv = document.querySelector('.target-div');
+        const parentDiv = targetDiv.parentNode;
+        const lastChild = parentDiv.lastElementChild;
+        lastChild.style.backgroundColor = 'yellow';
+    </script>
+
+</body>
+</html>
+
+7.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace All Occurrences of a Tag</title>
+</head>
+<body>
+
+    <!-- Example p elements -->
+    <p>This is the first paragraph.</p>
+    <p>This is the second paragraph.</p>
+    <p>This is the third paragraph.</p>
+
+    <script>
+        // Select all p elements in the document
+        const paragraphs = document.querySelectorAll('p');
+        paragraphs.forEach(p => {
+            const newDiv = document.createElement('div');
+            newDiv.textContent = p.textContent;
+            p.parentNode.replaceChild(newDiv, p);
+        });
+    </script>
+
+</body>
+</html>
+
+6.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Element Creation with Loop</title>
+</head>
+<body>
+
+    <!-- Div element with an id of "listContainer" -->
+    <div id="listContainer"></div>
+
+    <script>
+        const ulElement = document.createElement('ul');
+        for (let i = 1; i <= 5; i++) {
+            const liElement = document.createElement('li');
+            liElement.textContent = List Item ${i};
+            ulElement.appendChild(liElement);
+        }
+        const listContainer = document.getElementById('listContainer');
+        listContainer.appendChild(ulElement);
+    </script>
+
+</body>
+</html>
+
+5.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Multiple Attributes Dynamically</title>
+</head>
+<body>
+
+    <!-- Existing img element with a class name "image-class" -->
+    <img class="image-class" src="example.jpg">
+
+    <script>
+        const imgElement = document.querySelector('.image-class');
+        imgElement.setAttribute('data-id', '12345');
+        imgElement.setAttribute('alt', 'Example Image');
+        imgElement.setAttribute('title', 'Hover over this image');
+    </script>
+
+</body>
+</html>
+
+2.<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Element After Another</title>
+</head>
+<body>
+
+    <!-- Existing paragraph with an id of "existingPara" -->
+    <p id="existingPara">This is the existing paragraph.</p>
+
+    <script>
+        const newPara = document.createElement('p');
+        newPara.textContent = 'Inserted After';
+        const existingPara = document.getElementById('existingPara');
+        existingPara.parentNode.insertBefore(newPara, existingPara.nextSibling);
+    </script>
+
+</body>
+</html>
+
+3.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Nested Structure</title>
+</head>
+<body>
+
+    <script>
+        const containerDiv = document.createElement('div');
+        containerDiv.className = 'container';
+        const header = document.createElement('h3');
+        header.textContent = 'Section Header';
+        const paragraph = document.createElement('p');
+        paragraph.textContent = 'Section Content';
+        containerDiv.appendChild(header);
+        containerDiv.appendChild(paragraph);
+        document.body.appendChild(containerDiv);
+    </script>
+
+</body>
+</html>
+
+3.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace Existing Element</title>
+</head>
+<body>
+
+    <!-- Existing h2 element -->
+    <h2 id="oldHeading">Old Heading</h2>
+
+    <script>
+        const newHeading = document.createElement('h2');
+        newHeading.textContent = 'New Heading';
+        const oldHeading = document.getElementById('oldHeading');
+        oldHeading.parentNode.replaceChild(newHeading, oldHeading);
+    </script>
+
+</body>
+</html>
+4.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traverse to Sibling Elements</title>
+</head>
+<body>
+
+    <!-- h3 element with an id of "header" -->
+    <h3 id="header">Section Header</h3>
+    
+    <!-- Next sibling paragraph element -->
+    <p>Original Sibling Content</p>
+
+    <script>
+        const header = document.getElementById('header');
+        const nextSibling = header.nextElementSibling;
+        if (nextSibling) {
+            nextSibling.textContent = 'Sibling Updated';
+        }
+    </script>
+
+</body>
+</html>
+MEDIUM LEVEL
+
+1.
+var ulElement = document.getElementsByClassName("myList")[0];
+var liElements = ulElement.getElementsByTagName("li");
+for (var i = 0; i < liElements.length; i++) {
+    console.log(liElements[i].textContent);
+}
+2.
+var newParagraph = document.createElement("p");
+newParagraph.textContent = "Inserted After";
+var existingParagraph = document.getElementById("existingParagraph");
+existingParagraph.insertAdjacentElement('afterend', newParagraph);
+3.
+var newHeading = document.createElement("h2");
+newHeading.textContent = "New Heading";
+var oldHeading = document.getElementById("oldHeading");
+oldHeading.replaceWith(newHeading);
+4.
+var headingElement = document.getElementById("myHeading");
+var siblingElement = headingElement.nextElementSibling;
+siblingElement.textContent = "Sibling Updated";
+5.
+var inputElement = document.getElementById("myInput")
+inputElement.type = "password";                  
+inputElement.placeholder = "Enter your password"; 
+inputElement.name = "user-password";              
+6.
+var divElement = document.getElementsByClassName("myDiv")[0];
+var newParentSection = document.getElementById("newParent");
+newParentSection.appendChild(divElement);
+7.
+
+var divElement = document.getElementById("myDiv");
+var lastParagraph = divElement.lastElementChild;
+var newParagraph = document.createElement("p");
+newParagraph.textContent = "This is an additional paragraph.";
+lastParagraph.insertAdjacentElement('afterend', newParagraph);
+8.
+
+var divElement = document.getElementById("myDiv");
+var paragraphToRemove = divElement.getElementsByClassName("removeMe")[0]; // Assuming you want to remove the first occurrence
+if (paragraphToRemove) {
+    paragraphToRemove.remove();
+}
+
+9.
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Multiple Elements</title>
+</head>
+<body>
+
+    <!-- Existing unordered list -->
+    <ul class="my-list">
+        <li>Existing Item 1</li>
+        <li>Existing Item 2</li>
+    </ul>
+
+    <script>
+        const ulElement = document.querySelector('.my-list');
+        const newItem1 = document.createElement('li');
+        newItem1.textContent = 'Item 1';
+
+        const newItem2 = document.createElement('li');
+        newItem2.textContent = 'Item 2';
+        ulElement.appendChild(newItem1);
+        ulElement.appendChild(newItem2);
+    </script>
+
+</body>
+</html>
+10.
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Multiple Styles</title>
+    <style>
+        .styled-div {
+            background-color: lightgray;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Div element with a class name "styled-div" -->
+    <div class="styled-div">This is a styled div.</div>
+
+    <script>
+        const divElement = document.querySelector('.styled-div');
+        divElement.style.fontSize = '20px';
+        divElement.style.padding = '10px';
+        divElement.style.border = '2px solid black';
+    </script>
+
+</body>
+</htML>
+
+
+
+
+
+
+
